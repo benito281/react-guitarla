@@ -6,6 +6,7 @@ import { db } from './data/data.js'
 function App() {
     //State para guardar la data de las guitarras
     const [data, setData] = useState(db);    
+    const [cart, setCart] = useState([]);
 
   return (
     <>
@@ -17,11 +18,10 @@ function App() {
             {
                 data.map((guitar) => (
                     <Guitar 
-                        price={guitar.price}
-                        name={guitar.name}
-                        image={guitar.image}
-                        description={guitar.description}
-                        key={guitar.id}
+                        guitar = {guitar}
+                        key = {guitar.id}
+                        cart = {cart}
+                        setCart = {setCart}
                     />    
                    
                 ))
