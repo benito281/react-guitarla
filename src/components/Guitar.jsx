@@ -1,6 +1,6 @@
 import React from "react";
 
-//TODO : Sección 6 = state Carrito
+//TODO : Sección 6 = mostrando los contenidos del carrito
 
 function Guitar({guitar, setCart, addToCart}) {
   const { id, name, image, description, price } = guitar;
