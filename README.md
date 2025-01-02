@@ -1,8 +1,35 @@
-# React + Vite
+# GuitarLA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto desarrollado en React + Vite, consiste en un carrito de compras de guitarras. 
+Los datos de las guitarras provienen de un archivo para poder renderizarlas.
 
-Currently, two official plugins are available:
+## Acciones:
+* Agregar o eliminar del carrito guitarras.
+* Aumentar o disminuir cantidades de guitarras.
+  
+![Alt Text](docs/img.jpg)
+![Alt Text](docs/img2.jpg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Pasos:
+* Instalación de paquetes 
+```
+npm install
+```
+* Ejecutar en modo de desarrollo
+```
+npm run dev
+```
+* Construir proyecto para producción
+```
+  npm run build
+```
+* Ubicación
+```
+cd dist/
+```
+* Ejecutar proyecto en producción
+```
+npm run preview
+ 
+ localhost:4173
+```

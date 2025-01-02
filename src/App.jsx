@@ -8,7 +8,6 @@ function App() {
   /* Obtiene el contenido del carrito */
   const initialCart = () => {
     const localStorageCart = localStorage.getItem('cart')
-
     return localStorageCart ? JSON.parse(localStorageCart) : [];
   }
 
@@ -74,12 +73,15 @@ function App() {
         return {
           ...item,
           quantity : item.quantity - 1,
-          stock : item.stock + 1
         }
       }
       return item;
     })
     setCart(updateCart);
+  }
+
+  function clearCart(){
+    setCart([])
   }
   return (
     <>
@@ -87,6 +89,7 @@ function App() {
         removeFromCart={removeFromCart}
         increaseQuantity={increaseQuantity}
         decreaseQuantity={decreaseQuantity}
+        clearCart={clearCart}
       />
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>

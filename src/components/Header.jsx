@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 // Este componente es el encargado de mostrar el header de la pagina, en el cual se encuentra el logo de la tienda y el carrito de compras.
-export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity }) {
+export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart }) {
   //state derivado
   const isEmpty = useMemo(() => cart.length === 0, [cart]);
   const cartTotal = useMemo(() => cart.reduce((acc, guitar) => acc + (guitar.price * guitar.quantity), 0), [cart]);
@@ -40,6 +40,7 @@ export default function Header({ cart, removeFromCart, increaseQuantity, decreas
                             <th>Nombre</th>
                             <th>Precio</th>
                             <th>Cantidad</th>
+                            <th>Stock</th>
                             <th></th>
                           </tr>
                         </thead>
@@ -64,6 +65,9 @@ export default function Header({ cart, removeFromCart, increaseQuantity, decreas
                                   +
                                 </button>
                               </td>
+                                <td>
+                                  {guitar.stock}
+                                </td>
                               <td>
                                 <button
                                   className="btn btn-danger"
@@ -83,7 +87,7 @@ export default function Header({ cart, removeFromCart, increaseQuantity, decreas
                     </>
                   )}
 
-                  <button className="btn btn-dark w-100 mt-3 p-2">
+                  <button className="btn btn-dark w-100 mt-3 p-2" onClick={() => clearCart()}>
                     Vaciar Carrito
                   </button>
                 </div>
