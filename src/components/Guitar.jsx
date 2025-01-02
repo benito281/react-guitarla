@@ -3,7 +3,7 @@ import React from "react";
 //TODO : Sección 6 = mostrando los contenidos del carrito
 
 function Guitar({guitar, setCart, addToCart}) {
-  const { id, name, image, description, price } = guitar;
+  const { id, name, image, description, price, stock } = guitar;
 
   
   return (
@@ -20,9 +20,11 @@ function Guitar({guitar, setCart, addToCart}) {
         <p>
           {description}
         </p>
+        <h4 className="text-black fs-4 fw-bold"> En stock : {stock} </h4>
         <p className="fw-black text-primary fs-3">${price}</p>
-        <button type="button" className="btn btn-dark w-100" onClick={() => addToCart(guitar)}>
-          Agregar al Carrito
+        
+        <button type="button" className="btn btn-dark w-100" onClick={() => addToCart(guitar)} disabled={stock === 0}>
+          { stock === 0 ? 'Sin stock' : 'Agregar al carrito' }
         </button>
       </div>
     </div>

@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 
 // Este componente es el encargado de mostrar el header de la pagina, en el cual se encuentra el logo de la tienda y el carrito de compras.
-export default function Header({ cart, removeFromCart }) {
+export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity }) {
   //state derivado
   const isEmpty = useMemo(() => cart.length === 0, [cart]);
-  const cartTotal = useMemo(() => cart.reduce((acc, guitar) => acc + guitar.price * guitar.quantity, 0), [cart]);
+  const cartTotal = useMemo(() => cart.reduce((acc, guitar) => acc + (guitar.price * guitar.quantity), 0), [cart]);
 
   return (
     <>
@@ -15,7 +15,7 @@ export default function Header({ cart, removeFromCart }) {
               <a href="index.html">
                 <img
                   className="img-fluid"
-                  src="./public/img/logo.svg"
+                  src="./img/logo.svg"
                   alt="imagen logo"
                 />
               </a>
@@ -24,7 +24,7 @@ export default function Header({ cart, removeFromCart }) {
               <div className="carrito">
                 <img
                   className="img-fluid"
-                  src="./public/img/carrito.png"
+                  src="./img/carrito.png"
                   alt="imagen carrito"
                 />
 
@@ -45,7 +45,7 @@ export default function Header({ cart, removeFromCart }) {
                         </thead>
                         <tbody>
                           {cart.map((guitar) => (
-                            <tr key={guitar.id}>
+                            <tr key={guitar.id + 1}>
                               <td>
                                 <img
                                   className="img-fluid"
@@ -56,11 +56,11 @@ export default function Header({ cart, removeFromCart }) {
                               <td>{guitar.name}</td>
                               <td className="fw-bold">${guitar.price}</td>
                               <td className="flex align-items-start gap-4">
-                                <button type="button" className="btn btn-dark">
+                                <button type="button" className="btn btn-dark" onClick={() => decreaseQuantity(guitar.id)}>
                                   -
                                 </button>
                                 {guitar.quantity}
-                                <button type="button" className="btn btn-dark">
+                                <button type="button" className="btn btn-dark" onClick={() => increaseQuantity(guitar.id)}>
                                   +
                                 </button>
                               </td>
